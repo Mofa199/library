@@ -264,3 +264,30 @@ footer {
 .social-links li {
     margin: 0 0.5rem;
 }
+
+/* Library Page */
+.library-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.library-section {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+.module {
+    margin-bottom: 1.5rem;
+}
+
+.topics {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.topic {
+    color: #1a6ac3;
+}
