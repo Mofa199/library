@@ -3,90 +3,572 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAMSA Library</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>TAMSA Library - Digital Medical Knowledge Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .category-tile:hover {
+            transform: scale(1.05);
+        }
+        
+        .feature-card:hover {
+            background-color: white;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .search-container {
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.1);
+        }
+        
+        .carousel-item {
+            transition: transform 0.5s ease;
+        }
+        
+        .partner-logo {
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+        
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+        
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
 </head>
-<body>
-<div id="header-placeholder"></div>
+<body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-book-medical text-3xl"></i>
+                    <h1 class="text-2xl font-bold">TAMSA <span class="font-light">Library</span></h1>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-link text-white hover:text-blue-100 transition duration-300">Home</a>
+                    <a href="#" class="nav-link text-white hover:text-blue-100 transition duration-300">Library</a>
+                    <a href="#" class="nav-link text-white hover:text-blue-100 transition duration-300">Courses</a>
+                    <a href="#" class="nav-link text-white hover:text-blue-100 transition duration-300">Resources</a>
+                    <a href="#" class="nav-link text-white hover:text-blue-100 transition duration-300">About</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="bg-white text-blue-600 px-4 py-2 rounded-full font-medium hover:bg-blue-50 transition duration-300">
+                        Sign In
+                    </button>
+                    <button class="md:hidden text-white text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Welcome to the TAMSA Digital Library</h1>
-                <p>Your gateway to medical knowledge. Explore our vast collection of books, journals, and research materials.</p>
-                <a href="library.html" class="cta-button">Explore Library</a>
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="gradient-bg text-white py-20">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                        Your Gateway to <span class="text-blue-200">Medical Knowledge</span>
+                    </h1>
+                    <p class="text-xl mb-8 text-blue-100">
+                        Explore our vast collection of books, journals, and research materials curated for medical students and professionals.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#" class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold text-center hover:bg-blue-50 transition duration-300">
+                            Explore Library
+                        </a>
+                        <a href="#" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold text-center hover:bg-white hover:text-blue-600 transition duration-300">
+                            Browse Courses
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute -top-10 -left-10 w-32 h-32 bg-blue-400 rounded-full opacity-20"></div>
+                        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-purple-400 rounded-full opacity-20"></div>
+                        <img src="https://images.unsplash.com/photo-1589998059171-988d322dfad6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Medical books" 
+                             class="relative rounded-xl shadow-2xl w-full h-auto">
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="search-section">
-            <div class="search-container">
-                <input type="text" id="search-bar" placeholder="Search for books, journals, articles...">
-                <button><i class="fas fa-search"></i></button>
-            </div>
-        </section>
-
-        <section class="featured-books">
-            <h2>Featured Books & Journals</h2>
-            <div class="carousel">
-                <!-- Carousel items will be added here -->
-            </div>
-        </section>
-
-        <section class="categories">
-            <h2>Categories</h2>
-            <div class="category-tiles">
-                <div class="tile">
-                    <i class="fas fa-book-medical"></i>
-                    <h3>Medical Books</h3>
-                </div>
-                <div class="tile">
-                    <i class="fas fa-journal-whills"></i>
-                    <h3>Journals</h3>
-                </div>
-                <div class="tile">
-                    <i class="fas fa-flask"></i>
-                    <h3>Research</h3>
-                </div>
-                <div class="tile">
-                    <i class="fas fa-file-alt"></i>
-                    <h3>Guidelines</h3>
-                </div>
-                <div class="tile">
-                    <i class="fas fa-sticky-note"></i>
-                    <h3>Notes</h3>
+        <!-- Search Section -->
+        <section class="py-12 bg-white -mt-10">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto">
+                    <div class="search-container bg-white rounded-full p-2 flex items-center shadow-lg">
+                        <input type="text" 
+                               placeholder="Search for books, journals, articles..." 
+                               class="flex-grow px-6 py-4 rounded-full focus:outline-none text-gray-700">
+                        <button class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition duration-300">
+                            <i class="fas fa-search text-xl"></i>
+                        </button>
+                    </div>
+                    <div class="flex justify-center mt-6 space-x-3">
+                        <span class="text-gray-500">Popular searches:</span>
+                        <a href="#" class="text-blue-600 hover:underline">Anatomy</a>
+                        <a href="#" class="text-blue-600 hover:underline">Pharmacology</a>
+                        <a href="#" class="text-blue-600 hover:underline">Pathology</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="platform-features">
-            <div class="feature-card">
-                <i class="fas fa-laptop-medical"></i>
-                <h3>Courses</h3>
-                <p>Interactive medical courses with progress tracking.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-pills"></i>
-                <h3>Pharmacology</h3>
-                <p>A comprehensive database of drugs and their interactions.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-question-circle"></i>
-                <h3>Flashcards & Quizzes</h3>
-                <p>Test your knowledge with our interactive flashcards and quizzes.</p>
+        <!-- Featured Books -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center mb-10">
+                    <h2 class="text-3xl font-bold text-gray-800">Featured <span class="text-blue-600">Books & Journals</span></h2>
+                    <a href="#" class="text-blue-600 font-medium hover:underline">View All</a>
+                </div>
+                
+                <div class="relative">
+                    <div class="carousel-container overflow-hidden">
+                        <div id="carousel" class="flex space-x-6 transition-transform duration-500">
+                            <!-- Book cards will be added here by JavaScript -->
+                        </div>
+                    </div>
+                    <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white p-3 rounded-full shadow-md text-blue-600 hover:bg-blue-50">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white p-3 rounded-full shadow-md text-blue-600 hover:bg-blue-50">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
             </div>
         </section>
 
-        <section class="partners">
-            <h2>Our Partners</h2>
-            <div class="partner-logos">
-                <!-- Partner logos will be added here -->
+        <!-- Categories -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Browse by <span class="text-blue-600">Category</span></h2>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <div class="category-tile bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg transition duration-300 border border-gray-100">
+                        <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-book-medical text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800">Medical Books</h3>
+                        <p class="text-sm text-gray-500 mt-2">500+ titles</p>
+                    </div>
+                    
+                    <div class="category-tile bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg transition duration-300 border border-gray-100">
+                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-journal-whills text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800">Journals</h3>
+                        <p class="text-sm text-gray-500 mt-2">200+ issues</p>
+                    </div>
+                    
+                    <div class="category-tile bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg transition duration-300 border border-gray-100">
+                        <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-flask text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800">Research</h3>
+                        <p class="text-sm text-gray-500 mt-2">300+ papers</p>
+                    </div>
+                    
+                    <div class="category-tile bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg transition duration-300 border border-gray-100">
+                        <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-file-alt text-yellow-600 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800">Guidelines</h3>
+                        <p class="text-sm text-gray-500 mt-2">Latest protocols</p>
+                    </div>
+                    
+                    <div class="category-tile bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg transition duration-300 border border-gray-100">
+                        <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-sticky-note text-red-600 text-2xl"></i>
+                        </div>
+                        <h3 class="font-bold text-gray-800">Notes</h3>
+                        <p class="text-sm text-gray-500 mt-2">Student resources</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platform Features -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Enhance Your <span class="text-blue-600">Learning</span></h2>
+                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+                    Our platform offers powerful tools to help you master medical knowledge efficiently.
+                </p>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="feature-card bg-white rounded-xl p-8 shadow-md transition duration-300 border border-gray-100">
+                        <div class="bg-blue-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-laptop-medical text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Interactive Courses</h3>
+                        <p class="text-gray-600">
+                            Comprehensive medical courses with video lectures, progress tracking, and certification.
+                        </p>
+                        <a href="#" class="mt-4 inline-block text-blue-600 font-medium hover:underline">Explore Courses →</a>
+                    </div>
+                    
+                    <div class="feature-card bg-white rounded-xl p-8 shadow-md transition duration-300 border border-gray-100">
+                        <div class="bg-purple-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-pills text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Pharmacology Database</h3>
+                        <p class="text-gray-600">
+                            Comprehensive drug database with mechanisms, interactions, and clinical uses.
+                        </p>
+                        <a href="#" class="mt-4 inline-block text-blue-600 font-medium hover:underline">Browse Drugs →</a>
+                    </div>
+                    
+                    <div class="feature-card bg-white rounded-xl p-8 shadow-md transition duration-300 border border-gray-100">
+                        <div class="bg-green-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-question-circle text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Flashcards & Quizzes</h3>
+                        <p class="text-gray-600">
+                            Test your knowledge with our interactive flashcards and customizable quizzes.
+                        </p>
+                        <a href="#" class="mt-4 inline-block text-blue-600 font-medium hover:underline">Start Practicing →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">What Our <span class="text-blue-600">Users Say</span></h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 rounded-xl p-8 border border-gray-200">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            "The TAMSA Library has been an invaluable resource throughout my medical studies. The collection of books and journals is comprehensive and up-to-date."
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-user text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Dr. Sarah Johnson</h4>
+                                <p class="text-sm text-gray-500">Resident Physician</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-xl p-8 border border-gray-200">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            "The pharmacology database saved me countless hours during my rotations. The drug interaction checker is particularly helpful for clinical practice."
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-user text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Michael Chen</h4>
+                                <p class="text-sm text-gray-500">Medical Student</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-xl p-8 border border-gray-200">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">
+                            "As a professor, I recommend TAMSA Library to all my students. The quality of resources and the user-friendly interface make it stand out."
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mr-4">
+                                <i class="fas fa-user text-green-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Prof. David Wilson</h4>
+                                <p class="text-sm text-gray-500">Medical Educator</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Trusted by <span class="text-blue-600">Leading Institutions</span></h2>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+                    <div class="partner-logo flex justify-center">
+                        <img src="https://via.placeholder.com/150x80?text=University" alt="University" class="h-12 opacity-70 hover:opacity-100">
+                    </div>
+                    <div class="partner-logo flex justify-center">
+                        <img src="https://via.placeholder.com/150x80?text=Hospital" alt="Hospital" class="h-12 opacity-70 hover:opacity-100">
+                    </div>
+                    <div class="partner-logo flex justify-center">
+                        <img src="https://via.placeholder.com/150x80?text=Medical+School" alt="Medical School" class="h-12 opacity-70 hover:opacity-100">
+                    </div>
+                    <div class="partner-logo flex justify-center">
+                        <img src="https://via.placeholder.com/150x80?text=Research+Center" alt="Research Center" class="h-12 opacity-70 hover:opacity-100">
+                    </div>
+                    <div class="partner-logo flex justify-center">
+                        <img src="https://via.placeholder.com/150x80?text=Publisher" alt="Publisher" class="h-12 opacity-70 hover:opacity-100">
+                    </div>
+                    <div class="partner-logo flex justify-center">
+                        <img src="https://via.placeholder.com/150x80?text=Medical+Org" alt="Medical Organization" class="h-12 opacity-70 hover:opacity-100">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16 gradient-bg text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Elevate Your Medical Knowledge?</h2>
+                <p class="text-xl text-blue-100 max-w-2xl mx-auto mb-8">
+                    Join thousands of medical students and professionals who trust TAMSA Library for their learning needs.
+                </p>
+                <a href="#" class="inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-bold hover:bg-blue-50 transition duration-300 shadow-lg">
+                    Get Started Now
+                </a>
             </div>
         </section>
     </main>
 
-<div id="footer-placeholder"></div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fas fa-book-medical text-2xl text-blue-400"></i>
+                        <h3 class="text-xl font-bold">TAMSA <span class="font-light">Library</span></h3>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Your comprehensive digital medical library for students and professionals.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Resources</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Books</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Journals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Research Papers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Clinical Guidelines</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Study Notes</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Features</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Interactive Courses</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Pharmacology Database</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Flashcards</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Quizzes</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Progress Tracking</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-blue-400 mt-1 mr-3"></i>
+                            <span class="text-gray-400">123 Medical Drive, Education City</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt text-blue-400 mt-1 mr-3"></i>
+                            <span class="text-gray-400">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-blue-400 mt-1 mr-3"></i>
+                            <span class="text-gray-400">support@tamsalibrary.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2023 TAMSA Library. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition duration-300">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        // Sample book data for the carousel
+        const books = [
+            {
+                title: "Gray's Anatomy",
+                author: "Henry Gray",
+                category: "Anatomy",
+                image: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80"
+            },
+            {
+                title: "Robbins Pathology",
+                author: "Vinay Kumar",
+                category: "Pathology",
+                image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+            },
+            {
+                title: "Harrison's Internal Medicine",
+                author: "Dennis L. Kasper",
+                category: "Medicine",
+                image: "https://images.unsplash.com/photo-1589998059171-988d322dfad6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                title: "Guyton Physiology",
+                author: "John E. Hall",
+                category: "Physiology",
+                image: "https://images.unsplash.com/photo-1589998059171-988d322dfad6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                title: "NEJM Journal",
+                author: "New England Journal",
+                category: "Journal",
+                image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+            }
+        ];
+
+        // Initialize carousel
+        const carousel = document.getElementById('carousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+        
+        // Create book cards
+        function createBookCards() {
+            return books.map(book => `
+                <div class="book-card flex-shrink-0 w-64 bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="${book.image}" alt="${book.title}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <span class="text-xs font-semibold text-blue-600">${book.category}</span>
+                        <h3 class="font-bold text-gray-800 mt-1 truncate">${book.title}</h3>
+                        <p class="text-sm text-gray-600">${book.author}</p>
+                        <div class="mt-4 flex justify-between items-center">
+                            <button class="text-blue-600 text-sm font-medium hover:underline">View Details</button>
+                            <button class="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition duration-300">
+                                <i class="fas fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Initialize carousel with book cards
+        carousel.innerHTML = createBookCards();
+        
+        // Update carousel position
+        function updateCarousel() {
+            const offset = -currentIndex * 272; // 272 = width + gap
+            carousel.style.transform = `translateX(${offset}px)`;
+        }
+        
+        // Event listeners for navigation buttons
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < books.length - 3) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+        
+        // Responsive adjustments
+        function handleResize() {
+            // You can add responsive logic here if needed
+        }
+        
+        window.addEventListener('resize', handleResize);
+        handleResize();
+    </script>
 </body>
 </html>
